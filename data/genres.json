@@ -1,0 +1,176 @@
+{
+  "noir": {
+    "name": "Noir",
+    "vocabularyReplacements": {
+      "walked": "shuffled",
+      "stood": "hunched",
+      "bright": "harsh",
+      "smiled": "smirked",
+      "watched": "studied",
+      "asked": "pressed",
+      "finally": "at last",
+      "ready": "done for"
+    },
+    "adjectiveAdditions": [
+      "dark", "shadowy", "bitter", "cold", "harsh", "empty"
+    ],
+    "sentencePatterns": {
+      "style": "short",
+      "maxLength": 12
+    },
+    "metaphorStyle": "cynical",
+    "toneWords": ["The smell", "The way", "That kind of", "Nothing good"],
+    "emphasisShift": "suspicious details"
+  },
+  "thriller": {
+    "name": "Thriller",
+    "vocabularyReplacements": {
+      "walked": "rushed",
+      "stood": "froze",
+      "smelled": "hit me with",
+      "looked": "scanned",
+      "asked": "demanded",
+      "sat": "dropped into",
+      "watched": "monitored"
+    },
+    "adjectiveAdditions": [
+      "urgent", "sudden", "sharp", "fast", "racing", "tense"
+    ],
+    "sentencePatterns": {
+      "style": "fragmented",
+      "maxLength": 10
+    },
+    "verbStyle": "active",
+    "toneWords": ["Too late", "Something wrong", "Had to", "Before"],
+    "emphasisShift": "time pressure"
+  },
+  "romance": {
+    "name": "Romance",
+    "vocabularyReplacements": {
+      "walked": "drifted",
+      "stood": "lingered",
+      "smelled": "filled the air with",
+      "looked": "gazed",
+      "asked": "whispered",
+      "watched": "observed tenderly"
+    },
+    "adjectiveAdditions": [
+      "warm", "soft", "gentle", "tender", "golden", "sweet"
+    ],
+    "sentencePatterns": {
+      "style": "flowing",
+      "minLength": 15
+    },
+    "metaphorStyle": "emotional",
+    "toneWords": ["My heart", "The warmth", "A longing", "Softly"],
+    "emphasisShift": "emotional connection"
+  },
+  "literary": {
+    "name": "Literary Fiction",
+    "vocabularyReplacements": {
+      "walked": "entered",
+      "stood": "remained",
+      "smelled": "carried the scent",
+      "looked": "observed",
+      "asked": "inquired",
+      "sat": "settled"
+    },
+    "adjectiveAdditions": [
+      "particular", "certain", "profound", "delicate", "subtle", "intricate"
+    ],
+    "sentencePatterns": {
+      "style": "complex",
+      "minLength": 18
+    },
+    "metaphorStyle": "philosophical",
+    "toneWords": ["Perhaps", "There was something", "As if", "The way one"],
+    "emphasisShift": "universal meaning"
+  },
+  "horror": {
+    "name": "Horror",
+    "vocabularyReplacements": {
+      "walked": "crept",
+      "stood": "loomed",
+      "smelled": "reeked",
+      "looked": "stared",
+      "bright": "blinding",
+      "asked": "whispered",
+      "smiled": "grinned",
+      "sat": "sank"
+    },
+    "adjectiveAdditions": [
+      "wrong", "twisted", "rotting", "cold", "dead", "crawling"
+    ],
+    "sentencePatterns": {
+      "style": "building",
+      "tension": "mounting"
+    },
+    "metaphorStyle": "visceral",
+    "toneWords": ["Something wrong", "The way it", "I couldn't", "Too"],
+    "emphasisShift": "dread and wrongness"
+  },
+  "scifi": {
+    "name": "Science Fiction",
+    "vocabularyReplacements": {
+      "walked": "proceeded",
+      "stood": "maintained position",
+      "smelled": "detected",
+      "looked": "observed",
+      "asked": "queried",
+      "watched": "monitored"
+    },
+    "adjectiveAdditions": [
+      "systematic", "calculated", "processed", "analyzed", "measured", "interfaced"
+    ],
+    "sentencePatterns": {
+      "style": "precise",
+      "technical": true
+    },
+    "metaphorStyle": "technological",
+    "toneWords": ["The system", "Protocol", "Data indicated", "Processing"],
+    "emphasisShift": "systemic patterns"
+  },
+  "mystery": {
+    "name": "Mystery",
+    "vocabularyReplacements": {
+      "walked": "approached",
+      "stood": "positioned herself",
+      "smelled": "noted the scent",
+      "looked": "examined",
+      "asked": "questioned",
+      "watched": "observed carefully"
+    },
+    "adjectiveAdditions": [
+      "curious", "suspicious", "unusual", "significant", "telling", "revealing"
+    ],
+    "sentencePatterns": {
+      "style": "questioning",
+      "observational": true
+    },
+    "metaphorStyle": "investigative",
+    "toneWords": ["Why", "What", "The question", "Something about"],
+    "emphasisShift": "clues and questions"
+  },
+  "magical-realism": {
+    "name": "Magical Realism",
+    "vocabularyReplacements": {
+      "walked": "floated",
+      "stood": "hovered",
+      "smelled": "breathed",
+      "bright": "luminous",
+      "asked": "whispered to",
+      "watched": "witnessed",
+      "smiled": "transformed"
+    },
+    "adjectiveAdditions": [
+      "impossible", "dreamlike", "otherworldly", "enchanted", "suspended", "timeless"
+    ],
+    "sentencePatterns": {
+      "style": "matter-of-fact",
+      "supernatural": true
+    },
+    "metaphorStyle": "literal",
+    "toneWords": ["As always", "Of course", "Naturally", "As it does"],
+    "emphasisShift": "impossible as ordinary"
+  }
+}

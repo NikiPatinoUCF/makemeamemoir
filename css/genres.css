@@ -1,0 +1,222 @@
+/* ===================================
+   Genre-Specific Themes
+   Each genre gets custom colors for cards and highlights
+   =================================== */
+
+/* Noir */
+.genre-card[data-genre="noir"] {
+    border-color: #2c2c2c;
+}
+
+.genre-card[data-genre="noir"]:hover,
+.genre-card[data-genre="noir"].active {
+    border-color: #1a1a1a;
+    background: linear-gradient(135deg, #3a3a3a 0%, #2c2c2c 100%);
+}
+
+.genre-card[data-genre="noir"] .genre-name {
+    color: #1a1a1a;
+}
+
+/* Thriller */
+.genre-card[data-genre="thriller"] {
+    border-color: #8b2635;
+}
+
+.genre-card[data-genre="thriller"]:hover,
+.genre-card[data-genre="thriller"].active {
+    border-color: #8b2635;
+    background: linear-gradient(135deg, #ab3645 0%, #8b2635 100%);
+}
+
+.genre-card[data-genre="thriller"] .genre-name {
+    color: #8b2635;
+}
+
+.genre-card[data-genre="thriller"].active .genre-name {
+    color: white;
+}
+
+/* Romance */
+.genre-card[data-genre="romance"] {
+    border-color: #d97498;
+}
+
+.genre-card[data-genre="romance"]:hover,
+.genre-card[data-genre="romance"].active {
+    border-color: #d97498;
+    background: linear-gradient(135deg, #f994b8 0%, #d97498 100%);
+}
+
+.genre-card[data-genre="romance"] .genre-name {
+    color: #c5527c;
+}
+
+.genre-card[data-genre="romance"].active .genre-name {
+    color: white;
+}
+
+/* Literary Fiction */
+.genre-card[data-genre="literary"] {
+    border-color: #2d5a4a;
+}
+
+.genre-card[data-genre="literary"]:hover,
+.genre-card[data-genre="literary"].active {
+    border-color: #2d5a4a;
+    background: linear-gradient(135deg, #3d7a6a 0%, #2d5a4a 100%);
+}
+
+.genre-card[data-genre="literary"] .genre-name {
+    color: #2d5a4a;
+}
+
+.genre-card[data-genre="literary"].active .genre-name {
+    color: white;
+}
+
+/* Horror */
+.genre-card[data-genre="horror"] {
+    border-color: #5a1a1a;
+}
+
+.genre-card[data-genre="horror"]:hover,
+.genre-card[data-genre="horror"].active {
+    border-color: #5a1a1a;
+    background: linear-gradient(135deg, #7a2a2a 0%, #5a1a1a 100%);
+}
+
+.genre-card[data-genre="horror"] .genre-name {
+    color: #5a1a1a;
+}
+
+.genre-card[data-genre="horror"].active .genre-name {
+    color: white;
+}
+
+/* Science Fiction */
+.genre-card[data-genre="scifi"] {
+    border-color: #1a4b7c;
+}
+
+.genre-card[data-genre="scifi"]:hover,
+.genre-card[data-genre="scifi"].active {
+    border-color: #1a4b7c;
+    background: linear-gradient(135deg, #2a6bac 0%, #1a4b7c 100%);
+}
+
+.genre-card[data-genre="scifi"] .genre-name {
+    color: #1a4b7c;
+}
+
+.genre-card[data-genre="scifi"].active .genre-name {
+    color: white;
+}
+
+/* Mystery */
+.genre-card[data-genre="mystery"] {
+    border-color: #6b4c7a;
+}
+
+.genre-card[data-genre="mystery"]:hover,
+.genre-card[data-genre="mystery"].active {
+    border-color: #6b4c7a;
+    background: linear-gradient(135deg, #8b6c9a 0%, #6b4c7a 100%);
+}
+
+.genre-card[data-genre="mystery"] .genre-name {
+    color: #6b4c7a;
+}
+
+.genre-card[data-genre="mystery"].active .genre-name {
+    color: white;
+}
+
+/* Magical Realism */
+.genre-card[data-genre="magical-realism"] {
+    border-color: #b8860b;
+}
+
+.genre-card[data-genre="magical-realism"]:hover,
+.genre-card[data-genre="magical-realism"].active {
+    border-color: #b8860b;
+    background: linear-gradient(135deg, #d8a61b 0%, #b8860b 100%);
+}
+
+.genre-card[data-genre="magical-realism"] .genre-name {
+    color: #b8860b;
+}
+
+.genre-card[data-genre="magical-realism"].active .genre-name {
+    color: white;
+}
+
+/* ===================================
+   Genre-Specific Highlight Colors
+   =================================== */
+.transformation-section[data-current-genre="noir"] .highlight {
+    background: linear-gradient(120deg, rgba(42, 42, 42, 0.15) 0%, rgba(42, 42, 42, 0.08) 100%);
+}
+
+.transformation-section[data-current-genre="thriller"] .highlight {
+    background: linear-gradient(120deg, rgba(139, 38, 53, 0.2) 0%, rgba(139, 38, 53, 0.1) 100%);
+}
+
+.transformation-section[data-current-genre="romance"] .highlight {
+    background: linear-gradient(120deg, rgba(217, 116, 152, 0.2) 0%, rgba(217, 116, 152, 0.1) 100%);
+}
+
+.transformation-section[data-current-genre="literary"] .highlight {
+    background: linear-gradient(120deg, rgba(45, 90, 74, 0.2) 0%, rgba(45, 90, 74, 0.1) 100%);
+}
+
+.transformation-section[data-current-genre="horror"] .highlight {
+    background: linear-gradient(120deg, rgba(90, 26, 26, 0.2) 0%, rgba(90, 26, 26, 0.1) 100%);
+}
+
+.transformation-section[data-current-genre="scifi"] .highlight {
+    background: linear-gradient(120deg, rgba(26, 75, 124, 0.2) 0%, rgba(26, 75, 124, 0.1) 100%);
+}
+
+.transformation-section[data-current-genre="mystery"] .highlight {
+    background: linear-gradient(120deg, rgba(107, 76, 122, 0.2) 0%, rgba(107, 76, 122, 0.1) 100%);
+}
+
+.transformation-section[data-current-genre="magical-realism"] .highlight {
+    background: linear-gradient(120deg, rgba(184, 134, 11, 0.2) 0%, rgba(184, 134, 11, 0.1) 100%);
+}
+
+/* ===================================
+   Genre-Specific Border Accents
+   =================================== */
+.transformation-section[data-current-genre="noir"] {
+    border-left-color: #2c2c2c;
+}
+
+.transformation-section[data-current-genre="thriller"] {
+    border-left-color: #8b2635;
+}
+
+.transformation-section[data-current-genre="romance"] {
+    border-left-color: #d97498;
+}
+
+.transformation-section[data-current-genre="literary"] {
+    border-left-color: #2d5a4a;
+}
+
+.transformation-section[data-current-genre="horror"] {
+    border-left-color: #5a1a1a;
+}
+
+.transformation-section[data-current-genre="scifi"] {
+    border-left-color: #1a4b7c;
+}
+
+.transformation-section[data-current-genre="mystery"] {
+    border-left-color: #6b4c7a;
+}
+
+.transformation-section[data-current-genre="magical-realism"] {
+    border-left-color: #b8860b;
+}

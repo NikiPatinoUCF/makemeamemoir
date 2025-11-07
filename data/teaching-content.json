@@ -1,0 +1,104 @@
+{
+  "overview": {
+    "title": "How Genre Works as a Craft Tool",
+    "content": "<p>Genre isn't just a marketing category—it's a lens that shapes how you tell a story. Each genre brings its own conventions for <strong>pacing, voice, sensory emphasis, and structure</strong>. When you understand these conventions, you can use them deliberately in your memoir to highlight different aspects of the same experience.</p><p>The same moment can feel urgent (thriller), atmospheric (noir), emotionally charged (romance), or philosophically profound (literary fiction). Genre conventions guide readers on <em>how to read</em> your work and <em>what to pay attention to</em>.</p><p>This tool helps you see these conventions in action by transforming your memoir scene through different genre lenses, showing you the specific craft choices that create each effect.</p>"
+  },
+  "genres": {
+    "noir": {
+      "name": "Noir",
+      "description": "Shadowy and cynical",
+      "teachingPoint": "<strong>Noir</strong> uses short, clipped sentences and cynical observations. It emphasizes light/shadow imagery, moral ambiguity, and a world-weary tone. Metaphors tend toward the dark and fatalistic. The narrator observes details with suspicious attention.",
+      "craftElements": [
+        "Short, punchy sentences create urgency and tension",
+        "Cynical, world-weary narrative voice",
+        "Heavy use of shadow/light imagery and urban metaphors",
+        "Details framed as potential clues or warnings",
+        "Fatalistic tone—things always turn out badly"
+      ]
+    },
+    "thriller": {
+      "name": "Thriller",
+      "description": "Urgent and suspenseful",
+      "teachingPoint": "<strong>Thriller</strong> accelerates pacing through active verbs and time pressure. Sentences fragment under tension. Ordinary moments gain urgency through the narrator's heightened awareness of threat or danger. Every detail might be significant.",
+      "craftElements": [
+        "Active, urgent verbs drive momentum forward",
+        "Fragmented sentences mirror racing thoughts",
+        "Time pressure creates narrative tension",
+        "Heightened sensory awareness of surroundings",
+        "Ordinary details reframed as potential threats"
+      ]
+    },
+    "romance": {
+      "name": "Romance",
+      "description": "Emotional and sensory",
+      "teachingPoint": "<strong>Romance</strong> slows down to savor emotional and physical sensations. Sentences lengthen and flow. The narrative focuses on warmth, connection, longing, and the interior emotional landscape. Metaphors often draw from nature and beauty.",
+      "craftElements": [
+        "Longer, flowing sentences create intimacy",
+        "Rich emotional interiority and reflection",
+        "Sensory details emphasize warmth and beauty",
+        "Metaphors of connection, growth, and light",
+        "Focus on relationships and emotional bonds"
+      ]
+    },
+    "literary": {
+      "name": "Literary Fiction",
+      "description": "Lyrical and introspective",
+      "teachingPoint": "<strong>Literary Fiction</strong> prioritizes language, metaphor, and philosophical depth. It dwells in observation and reflection. Sentences are complex and lyrical. The ordinary becomes profound through careful attention and poetic language.",
+      "craftElements": [
+        "Complex, layered sentences with poetic rhythm",
+        "Deep introspection and philosophical reflection",
+        "Sophisticated metaphors and symbolism",
+        "Attention to language as craft, not just vehicle",
+        "Universal themes emerge from specific moments"
+      ]
+    },
+    "horror": {
+      "name": "Horror",
+      "description": "Visceral and unsettling",
+      "teachingPoint": "<strong>Horror</strong> transforms the familiar into the uncanny and threatening. It uses visceral body sensations, creeping dread, and isolation. Details that seem innocent become ominous. The narrative voice carries an undercurrent of fear.",
+      "craftElements": [
+        "Visceral, body-focused sensory details",
+        "Building sense of dread and wrongness",
+        "Familiar situations made uncanny and threatening",
+        "Isolation and vulnerability emphasized",
+        "Sentence rhythm creates unease and tension"
+      ]
+    },
+    "scifi": {
+      "name": "Science Fiction",
+      "description": "Speculative and precise",
+      "teachingPoint": "<strong>Science Fiction</strong> uses precise, clinical language and technological metaphors. It reframes experiences through a speculative lens, seeing systems and patterns. The narrative maintains emotional distance while analyzing the mechanics of human behavior.",
+      "craftElements": [
+        "Precise, technical vocabulary and observation",
+        "Technological and systemic metaphors",
+        "Speculative reframing of ordinary experience",
+        "Clinical distance creates analytical perspective",
+        "Focus on patterns, systems, and mechanisms"
+      ]
+    },
+    "mystery": {
+      "name": "Mystery",
+      "description": "Observant and questioning",
+      "teachingPoint": "<strong>Mystery</strong> frames experiences as puzzles to be solved. Details are clues. The narrator adopts an investigative stance, asking questions and weighing evidence. Information is revealed strategically, creating curiosity and suspense.",
+      "craftElements": [
+        "Observational details framed as clues",
+        "Questioning narrative voice seeking answers",
+        "Strategic revelation of information",
+        "Emphasis on what's hidden or unexplained",
+        "Logical, investigative thought process"
+      ]
+    },
+    "magical-realism": {
+      "name": "Magical Realism",
+      "description": "Mundane meets extraordinary",
+      "teachingPoint": "<strong>Magical Realism</strong> blends the ordinary and impossible with matter-of-fact acceptance. Extraordinary elements appear without explanation or fanfare. The narrative maintains a steady, accepting tone even as reality bends, creating dreamlike atmosphere.",
+      "craftElements": [
+        "Supernatural elements treated as ordinary",
+        "Matter-of-fact tone even during impossible events",
+        "Dreamlike, folkloric atmosphere",
+        "Blurred boundaries between real and impossible",
+        "Metaphors made literal without explanation"
+      ]
+    }
+  }
+}

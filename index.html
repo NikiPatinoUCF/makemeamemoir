@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Anatomy of a Memoir: Genre as Lens</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/genres.css">
+</head>
+<body>
+    <!-- P5.js Canvas Background -->
+    <div id="p5-canvas-container"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>The Anatomy of a Memoir</h1>
+            <p class="subtitle">Genre as Lens</p>
+        </header>
+
+        <!-- Teaching Section -->
+        <section id="teaching-section" class="teaching-section">
+            <button id="teaching-toggle" class="section-toggle" aria-expanded="false">
+                <span class="toggle-icon">▼</span>
+                How Genre Works as a Craft Tool
+            </button>
+            <div id="teaching-content" class="collapsible-content">
+                <div class="teaching-overview">
+                    <p>Loading teaching content...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Section -->
+        <section id="demo-section" class="demo-section">
+            <h2>Try the Demo</h2>
+            <p>See how a simple memoir scene transforms across different genres before using your own writing.</p>
+            <button id="demo-button" class="primary-button">View Sample Transformations</button>
+            <div id="demo-display" class="demo-display hidden">
+                <p class="sample-label">Sample Memoir Scene:</p>
+                <div id="sample-text" class="sample-text"></div>
+            </div>
+        </section>
+
+        <!-- Text Input Section -->
+        <section id="input-section" class="input-section">
+            <h2>Your Memoir Scene</h2>
+            <p class="instructions">
+                Paste or type a short memoir scene (50-300 words). Focus on a specific moment or memory from your own experience.
+            </p>
+
+            <div class="input-controls">
+                <button id="load-saved-button" class="secondary-button">Load Saved Scene</button>
+                <button id="clear-button" class="secondary-button">Clear</button>
+            </div>
+
+            <textarea
+                id="memoir-input"
+                placeholder="Enter your memoir scene here..."
+                rows="10"
+                aria-label="Memoir scene input"
+            ></textarea>
+
+            <div class="input-footer">
+                <span id="char-counter" class="char-counter">0 / 300 words</span>
+                <button id="transform-button" class="primary-button" disabled>Transform My Scene</button>
+            </div>
+        </section>
+
+        <!-- Genre Selector -->
+        <section id="genre-section" class="genre-section hidden">
+            <h2>Select a Genre Lens</h2>
+            <p>Choose a genre to see how it transforms your memoir:</p>
+
+            <div id="genre-gallery" class="genre-gallery">
+                <button class="genre-card" data-genre="noir">
+                    <span class="genre-name">Noir</span>
+                    <span class="genre-desc">Shadowy and cynical</span>
+                </button>
+                <button class="genre-card" data-genre="thriller">
+                    <span class="genre-name">Thriller</span>
+                    <span class="genre-desc">Urgent and suspenseful</span>
+                </button>
+                <button class="genre-card" data-genre="romance">
+                    <span class="genre-name">Romance</span>
+                    <span class="genre-desc">Emotional and sensory</span>
+                </button>
+                <button class="genre-card" data-genre="literary">
+                    <span class="genre-name">Literary Fiction</span>
+                    <span class="genre-desc">Lyrical and introspective</span>
+                </button>
+                <button class="genre-card" data-genre="horror">
+                    <span class="genre-name">Horror</span>
+                    <span class="genre-desc">Visceral and unsettling</span>
+                </button>
+                <button class="genre-card" data-genre="scifi">
+                    <span class="genre-name">Science Fiction</span>
+                    <span class="genre-desc">Speculative and precise</span>
+                </button>
+                <button class="genre-card" data-genre="mystery">
+                    <span class="genre-name">Mystery</span>
+                    <span class="genre-desc">Observant and questioning</span>
+                </button>
+                <button class="genre-card" data-genre="magical-realism">
+                    <span class="genre-name">Magical Realism</span>
+                    <span class="genre-desc">Mundane meets extraordinary</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Transformation Display -->
+        <section id="transformation-section" class="transformation-section hidden">
+            <div class="transformation-header">
+                <h2>
+                    <span id="current-genre-name">Genre</span> Transformation
+                </h2>
+                <div class="transformation-controls">
+                    <button id="copy-button" class="control-button" title="Copy to clipboard">
+                        📋 Copy
+                    </button>
+                    <button id="save-button" class="control-button" title="Save to browser">
+                        💾 Save
+                    </button>
+                    <button id="pdf-button" class="control-button" title="Download as PDF">
+                        📄 PDF
+                    </button>
+                </div>
+            </div>
+
+            <div id="contextual-teaching" class="contextual-teaching">
+                <p>Loading genre insights...</p>
+            </div>
+
+            <div class="comparison-container">
+                <div class="comparison-side">
+                    <h3>Original</h3>
+                    <div id="original-text" class="text-display"></div>
+                </div>
+                <div class="comparison-side">
+                    <h3><span id="genre-label">Transformed</span></h3>
+                    <div id="transformed-text" class="text-display"></div>
+                </div>
+            </div>
+
+            <!-- Annotations -->
+            <div class="annotations-container">
+                <div class="annotations-header">
+                    <h3>Craft Annotations</h3>
+                    <button id="toggle-all-annotations" class="toggle-all-button">Show All</button>
+                </div>
+
+                <div class="annotation-category">
+                    <button class="annotation-toggle" data-category="voice">
+                        <span class="toggle-icon">▼</span>
+                        Voice & Tone
+                    </button>
+                    <div class="annotation-content" data-category="voice"></div>
+                </div>
+
+                <div class="annotation-category">
+                    <button class="annotation-toggle" data-category="pacing">
+                        <span class="toggle-icon">▼</span>
+                        Pacing & Rhythm
+                    </button>
+                    <div class="annotation-content" data-category="pacing"></div>
+                </div>
+
+                <div class="annotation-category">
+                    <button class="annotation-toggle" data-category="sensory">
+                        <span class="toggle-icon">▼</span>
+                        Sensory Details
+                    </button>
+                    <div class="annotation-content" data-category="sensory"></div>
+                </div>
+
+                <div class="annotation-category">
+                    <button class="annotation-toggle" data-category="structure">
+                        <span class="toggle-icon">▼</span>
+                        Structure & Syntax
+                    </button>
+                    <div class="annotation-content" data-category="structure"></div>
+                </div>
+
+                <div class="annotation-category">
+                    <button class="annotation-toggle" data-category="theme">
+                        <span class="toggle-icon">▼</span>
+                        Theme & Emphasis
+                    </button>
+                    <div class="annotation-content" data-category="theme"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>An educational tool for exploring genre as a craft element in memoir writing.</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/genre-transformer.js"></script>
+    <script src="js/annotations.js"></script>
+    <script src="js/pdf-export.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
