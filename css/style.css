@@ -232,8 +232,17 @@ section p {
     border-left: 4px solid var(--ruby);
 }
 
-.famous-genre-selector {
+.famous-controls {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: flex-end;
+    flex-wrap: wrap;
     margin-bottom: var(--spacing-md);
+}
+
+.famous-genre-selector {
+    flex: 1;
+    min-width: 250px;
 }
 
 .famous-genre-selector label {
@@ -364,6 +373,25 @@ section p {
 
 .scene-select-button:hover {
     background: var(--ruby-light);
+}
+
+.random-scene-button {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background: linear-gradient(135deg, var(--amethyst) 0%, var(--sapphire) 100%);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    white-space: nowrap;
+}
+
+.random-scene-button:hover {
+    background: linear-gradient(135deg, var(--amethyst-light) 0%, var(--sapphire-light) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 /* ===================================

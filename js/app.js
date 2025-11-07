@@ -171,6 +171,10 @@ function setupEventListeners() {
     const famousGenreSelect = document.getElementById('famous-genre-select');
     famousGenreSelect?.addEventListener('change', handleFamousGenreSelect);
 
+    // Random scene picker
+    const randomSceneButton = document.getElementById('random-scene-button');
+    randomSceneButton?.addEventListener('click', pickRandomScene);
+
     // Text input
     const memoirInput = document.getElementById('memoir-input');
     memoirInput?.addEventListener('input', handleTextInput);
@@ -216,6 +220,7 @@ function toggleCollapsible(contentId, toggleButton) {
  */
 function showDemo() {
     AppState.isDemoMode = true;
+    AppState.isFamousSceneMode = false;
     const demoDisplay = document.getElementById('demo-display');
     const sampleText = document.getElementById('sample-text');
 
@@ -226,6 +231,11 @@ function showDemo() {
     // Set sample as current text and enable transformation
     AppState.currentText = AppState.sampleScene;
     showSection('genre-section', true);
+
+    // Scroll to genre section with slight delay for better UX
+    setTimeout(() => {
+        document.getElementById('genre-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
 }
 
 /**
@@ -459,6 +469,61 @@ function selectFamousScene(scene, card) {
     document.getElementById('genre-section').scrollIntoView({ behavior: 'smooth' });
 
     // Optional: Clear user's input field to avoid confusion
+    document.getElementById('memoir-input').value = '';
+    document.getElementById('char-counter').textContent = '0 / 300 words';
+    document.getElementById('transform-button').disabled = true;
+}
+
+/**
+ * Pick a random famous scene from all genres
+ */
+function pickRandomScene() {
+    if (!AppState.famousScenes) return;
+
+    // Get all genres
+    const genres = Object.keys(AppState.famousScenes);
+    if (genres.length === 0) return;
+
+    // Pick random genre
+    const randomGenre = genres[Math.floor(Math.random() * genres.length)];
+    const scenes = AppState.famousScenes[randomGenre];
+
+    // Pick random scene from that genre
+    const randomScene = scenes[Math.floor(Math.random() * scenes.length)];
+
+    // Set it as current
+    AppState.isFamousSceneMode = true;
+    AppState.isDemoMode = false;
+    AppState.currentText = randomScene.scene;
+
+    // Update the selector to show which genre was selected
+    const famousGenreSelect = document.getElementById('famous-genre-select');
+    if (famousGenreSelect) {
+        famousGenreSelect.value = randomGenre;
+    }
+
+    // Display the scenes for that genre
+    displayFamousScenes(scenes, randomGenre);
+
+    // Highlight the selected scene
+    setTimeout(() => {
+        const cards = document.querySelectorAll('.scene-card');
+        const selectedIndex = scenes.indexOf(randomScene);
+        if (cards[selectedIndex]) {
+            cards[selectedIndex].classList.add('selected');
+            cards[selectedIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }, 100);
+
+    // Show genre selection
+    showSection('genre-section', true);
+
+    // Scroll to genre section
+    setTimeout(() => {
+        document.getElementById('genre-section').scrollIntoView({ behavior: 'smooth' });
+    }, 500);
+
+    // Clear user's input field
     document.getElementById('memoir-input').value = '';
     document.getElementById('char-counter').textContent = '0 / 300 words';
     document.getElementById('transform-button').disabled = true;
