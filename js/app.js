@@ -17,6 +17,7 @@ const AppState = {
 
 // Initialize components
 const transformer = new GenreTransformer();
+const aiTransformer = new AITransformer();
 const annotationManager = new AnnotationManager();
 const pdfExporter = new PDFExporter();
 
@@ -175,6 +176,20 @@ function setupEventListeners() {
     const randomSceneButton = document.getElementById('random-scene-button');
     randomSceneButton?.addEventListener('click', pickRandomScene);
 
+    // Transformation mode toggle
+    const modeRadios = document.querySelectorAll('input[name="transform-mode"]');
+    modeRadios.forEach(radio => {
+        radio.addEventListener('change', handleModeChange);
+    });
+
+    // API key management
+    document.getElementById('save-api-key')?.addEventListener('click', saveAPIKey);
+    document.getElementById('clear-api-key')?.addEventListener('click', clearAPIKey);
+
+    // Initialize API key section visibility
+    updateAPIKeySection();
+    loadSavedAPIKey();
+
     // Text input
     const memoirInput = document.getElementById('memoir-input');
     memoirInput?.addEventListener('input', handleTextInput);
@@ -301,18 +316,51 @@ function handleGenreSelection(genreKey) {
 /**
  * Perform the transformation
  */
-function performTransformation(genreKey) {
-    const result = transformer.transform(AppState.currentText, genreKey);
-    AppState.currentTransformation = result;
+async function performTransformation(genreKey) {
+    // Check which mode is selected
+    const mode = document.querySelector('input[name="transform-mode"]:checked')?.value || 'rules';
 
-    // Update transformation section
-    displayTransformation(genreKey, result);
+    // Show loading state
+    const transformationSection = document.getElementById('transformation-section');
+    transformationSection.classList.add('loading');
 
-    // Show transformation section
-    showSection('transformation-section', true);
+    try {
+        let result;
 
-    // Scroll to transformation
-    document.getElementById('transformation-section').scrollIntoView({ behavior: 'smooth' });
+        if (mode === 'ai') {
+            // Use AI transformation
+            if (!aiTransformer.hasAPIKey()) {
+                alert('Please add your Claude API key to use AI-powered transformations.');
+                transformationSection.classList.remove('loading');
+                return;
+            }
+
+            const genreInfo = AppState.teachingContent?.genres[genreKey];
+            result = await aiTransformer.transform(AppState.currentText, genreKey, genreInfo);
+        } else {
+            // Use rule-based transformation
+            result = transformer.transform(AppState.currentText, genreKey);
+        }
+
+        AppState.currentTransformation = result;
+
+        // Update transformation section
+        displayTransformation(genreKey, result);
+
+        // Show transformation section
+        showSection('transformation-section', true);
+
+        // Scroll to transformation
+        setTimeout(() => {
+            document.getElementById('transformation-section').scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+
+    } catch (error) {
+        console.error('Transformation error:', error);
+        alert(`Transformation failed: ${error.message}`);
+    } finally {
+        transformationSection.classList.remove('loading');
+    }
 }
 
 /**
@@ -611,6 +659,80 @@ function showSection(sectionId, show) {
         } else {
             section.classList.add('hidden');
             section.classList.remove('fade-in');
+        }
+    }
+}
+
+/**
+ * Handle transformation mode change
+ */
+function handleModeChange(e) {
+    updateAPIKeySection();
+}
+
+/**
+ * Update API key section visibility based on selected mode
+ */
+function updateAPIKeySection() {
+    const mode = document.querySelector('input[name="transform-mode"]:checked')?.value;
+    const apiKeySection = document.getElementById('api-key-section');
+
+    if (mode === 'ai') {
+        apiKeySection.classList.remove('hidden');
+    } else {
+        apiKeySection.classList.add('hidden');
+    }
+}
+
+/**
+ * Load saved API key into input field
+ */
+function loadSavedAPIKey() {
+    if (aiTransformer.hasAPIKey()) {
+        const apiKeyInput = document.getElementById('api-key-input');
+        if (apiKeyInput) {
+            apiKeyInput.value = aiTransformer.apiKey;
+        }
+    }
+}
+
+/**
+ * Save API key
+ */
+function saveAPIKey() {
+    const apiKeyInput = document.getElementById('api-key-input');
+    const key = apiKeyInput?.value.trim();
+
+    if (!key) {
+        alert('Please enter an API key.');
+        return;
+    }
+
+    if (!key.startsWith('sk-ant-')) {
+        alert('Invalid API key format. Claude API keys start with "sk-ant-"');
+        return;
+    }
+
+    if (aiTransformer.saveAPIKey(key)) {
+        alert('API key saved successfully!');
+    } else {
+        alert('Error saving API key. Please try again.');
+    }
+}
+
+/**
+ * Clear API key
+ */
+function clearAPIKey() {
+    if (confirm('Are you sure you want to clear your API key?')) {
+        if (aiTransformer.clearAPIKey()) {
+            const apiKeyInput = document.getElementById('api-key-input');
+            if (apiKeyInput) {
+                apiKeyInput.value = '';
+            }
+            alert('API key cleared.');
+        } else {
+            alert('Error clearing API key.');
         }
     }
 }

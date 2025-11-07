@@ -104,6 +104,43 @@
             <h2>Select a Genre Lens</h2>
             <p>Choose a genre to see how it transforms your memoir:</p>
 
+            <!-- Transformation Mode Toggle -->
+            <div class="transformation-mode-selector">
+                <label class="mode-label">
+                    <input type="radio" name="transform-mode" value="rules" checked>
+                    <span class="mode-option">
+                        <strong>Rule-Based</strong>
+                        <small>Free • Instant • Offline</small>
+                    </span>
+                </label>
+                <label class="mode-label">
+                    <input type="radio" name="transform-mode" value="ai">
+                    <span class="mode-option">
+                        <strong>AI-Powered (Claude)</strong>
+                        <small>Requires API Key • Better Quality</small>
+                    </span>
+                </label>
+            </div>
+
+            <!-- API Key Input (hidden by default) -->
+            <div id="api-key-section" class="api-key-section hidden">
+                <label for="api-key-input">Claude API Key:</label>
+                <div class="api-key-controls">
+                    <input
+                        type="password"
+                        id="api-key-input"
+                        placeholder="sk-ant-..."
+                        class="api-key-input"
+                    >
+                    <button id="save-api-key" class="secondary-button">Save Key</button>
+                    <button id="clear-api-key" class="secondary-button">Clear</button>
+                </div>
+                <p class="api-key-info">
+                    ⚠️ Your API key is stored locally in your browser and never sent to our servers.
+                    Get your key from <a href="https://console.anthropic.com/" target="_blank">console.anthropic.com</a>
+                </p>
+            </div>
+
             <div id="genre-gallery" class="genre-gallery">
                 <button class="genre-card" data-genre="noir">
                     <span class="genre-name">Noir</span>
@@ -234,6 +271,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/genre-transformer.js"></script>
+    <script src="js/ai-transformer.js"></script>
     <script src="js/annotations.js"></script>
     <script src="js/pdf-export.js"></script>
     <script src="js/app.js"></script>

@@ -457,6 +457,109 @@ textarea:focus {
     border-left: 4px solid var(--sapphire);
 }
 
+/* Transformation Mode Selector */
+.transformation-mode-selector {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--bg-primary);
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+
+.mode-label {
+    flex: 1;
+    min-width: 200px;
+    cursor: pointer;
+}
+
+.mode-label input[type="radio"] {
+    display: none;
+}
+
+.mode-option {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-md);
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    transition: all var(--transition-speed);
+    text-align: center;
+}
+
+.mode-label input[type="radio"]:checked + .mode-option {
+    border-color: var(--sapphire);
+    background: linear-gradient(135deg, #fff 0%, #e8f4f8 100%);
+    box-shadow: 0 2px 8px rgba(26, 75, 124, 0.2);
+}
+
+.mode-option strong {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.mode-option small {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* API Key Section */
+.api-key-section {
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: #fff9e6;
+    border: 2px solid var(--topaz);
+    border-radius: 6px;
+}
+
+.api-key-section label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+}
+
+.api-key-controls {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.api-key-input {
+    flex: 1;
+    min-width: 250px;
+    padding: var(--spacing-sm);
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+.api-key-input:focus {
+    outline: none;
+    border-color: var(--topaz);
+}
+
+.api-key-info {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.api-key-info a {
+    color: var(--sapphire);
+    text-decoration: underline;
+}
+
+.api-key-info a:hover {
+    color: var(--sapphire-light);
+}
+
 .genre-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
