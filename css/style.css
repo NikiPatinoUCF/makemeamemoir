@@ -226,6 +226,147 @@ section p {
 }
 
 /* ===================================
+   Famous Scenes Section
+   =================================== */
+.famous-scenes-section {
+    border-left: 4px solid var(--ruby);
+}
+
+.famous-genre-selector {
+    margin-bottom: var(--spacing-md);
+}
+
+.famous-genre-selector label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-primary);
+}
+
+.genre-select {
+    width: 100%;
+    max-width: 400px;
+    padding: var(--spacing-sm);
+    font-size: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+    transition: border-color var(--transition-speed);
+}
+
+.genre-select:focus {
+    outline: none;
+    border-color: var(--ruby);
+}
+
+.famous-scenes-list {
+    margin-top: var(--spacing-lg);
+}
+
+.scene-card {
+    background: white;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    cursor: pointer;
+    transition: all var(--transition-speed);
+}
+
+.scene-card:hover {
+    border-color: var(--ruby);
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transform: translateY(-2px);
+}
+
+.scene-card.selected {
+    border-color: var(--ruby);
+    border-width: 3px;
+    background: linear-gradient(135deg, #fff 0%, var(--bg-primary) 100%);
+}
+
+.scene-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+}
+
+.scene-title {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.scene-meta {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.scene-author {
+    font-style: italic;
+}
+
+.scene-type {
+    display: inline-block;
+    padding: 2px 8px;
+    background: var(--ruby);
+    color: white;
+    border-radius: 3px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    margin-left: var(--spacing-xs);
+}
+
+.scene-excerpt {
+    font-family: var(--font-serif);
+    line-height: 1.7;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    max-height: 100px;
+    overflow: hidden;
+    position: relative;
+}
+
+.scene-excerpt::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(transparent, white);
+}
+
+.scene-card.selected .scene-excerpt {
+    max-height: none;
+}
+
+.scene-card.selected .scene-excerpt::after {
+    display: none;
+}
+
+.scene-select-button {
+    margin-top: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: var(--ruby);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background var(--transition-speed);
+}
+
+.scene-select-button:hover {
+    background: var(--ruby-light);
+}
+
+/* ===================================
    Input Section
    =================================== */
 .input-section {

@@ -10,7 +10,9 @@ const AppState = {
     currentTransformation: null,
     sampleScene: null,
     teachingContent: null,
-    isDemoMode: false
+    famousScenes: null,
+    isDemoMode: false,
+    isFamousSceneMode: false
 };
 
 // Initialize components
@@ -80,6 +82,7 @@ async function initializeApp() {
     // Load data
     await loadSampleScene();
     await loadTeachingContent();
+    await loadFamousScenes();
     await transformer.loadGenreRules();
 
     // Initialize components
@@ -89,8 +92,13 @@ async function initializeApp() {
     // Set up event listeners
     setupEventListeners();
 
-    // Load saved scene if exists
-    loadSavedScene();
+    // Load saved scene if exists (don't show alert)
+    const savedText = StorageManager.loadCurrentScene();
+    if (savedText) {
+        const memoirInput = document.getElementById('memoir-input');
+        memoirInput.value = savedText;
+        memoirInput.dispatchEvent(new Event('input'));
+    }
 
     // Show initial instructions
     showSection('teaching-section', false);
@@ -124,6 +132,18 @@ async function loadTeachingContent() {
 }
 
 /**
+ * Load famous scenes from JSON
+ */
+async function loadFamousScenes() {
+    try {
+        const response = await fetch('data/famous-scenes.json');
+        AppState.famousScenes = await response.json();
+    } catch (error) {
+        console.error('Error loading famous scenes:', error);
+    }
+}
+
+/**
  * Display teaching overview
  */
 function displayTeachingOverview() {
@@ -147,6 +167,10 @@ function setupEventListeners() {
     const demoButton = document.getElementById('demo-button');
     demoButton?.addEventListener('click', showDemo);
 
+    // Famous scenes genre selector
+    const famousGenreSelect = document.getElementById('famous-genre-select');
+    famousGenreSelect?.addEventListener('change', handleFamousGenreSelect);
+
     // Text input
     const memoirInput = document.getElementById('memoir-input');
     memoirInput?.addEventListener('input', handleTextInput);
@@ -168,7 +192,7 @@ function setupEventListeners() {
     document.getElementById('save-button')?.addEventListener('click', saveCurrentScene);
     document.getElementById('pdf-button')?.addEventListener('click', exportToPDF);
     document.getElementById('clear-button')?.addEventListener('click', clearInput);
-    document.getElementById('load-saved-button')?.addEventListener('click', loadSavedScene);
+    document.getElementById('load-saved-button')?.addEventListener('click', loadSavedSceneWithAlert);
 }
 
 /**
@@ -339,6 +363,108 @@ async function copyToClipboard() {
 }
 
 /**
+ * Handle famous genre selection
+ */
+function handleFamousGenreSelect(e) {
+    const genreKey = e.target.value;
+    if (!genreKey || !AppState.famousScenes) return;
+
+    const scenes = AppState.famousScenes[genreKey];
+    if (!scenes) return;
+
+    displayFamousScenes(scenes, genreKey);
+}
+
+/**
+ * Display famous scenes for a genre
+ */
+function displayFamousScenes(scenes, genreKey) {
+    const scenesList = document.getElementById('famous-scenes-list');
+    scenesList.innerHTML = '';
+
+    scenes.forEach((scene, index) => {
+        const card = document.createElement('div');
+        card.className = 'scene-card';
+        card.dataset.sceneIndex = index;
+        card.dataset.genreKey = genreKey;
+
+        card.innerHTML = `
+            <div class="scene-card-header">
+                <div>
+                    <div class="scene-title">${scene.title}</div>
+                    <div class="scene-meta">
+                        <span class="scene-author">${scene.author}</span>
+                        <span class="scene-type">${scene.type}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="scene-excerpt">${scene.scene}</div>
+            <button class="scene-select-button">Use This Scene</button>
+        `;
+
+        // Add click handler for the select button
+        const selectButton = card.querySelector('.scene-select-button');
+        selectButton.addEventListener('click', (e) => {
+            e.stopPropagation();
+            selectFamousScene(scene, card);
+        });
+
+        // Add click handler for the card
+        card.addEventListener('click', () => {
+            toggleSceneCardExpansion(card);
+        });
+
+        scenesList.appendChild(card);
+    });
+
+    scenesList.classList.remove('hidden');
+    scenesList.classList.add('fade-in');
+}
+
+/**
+ * Toggle scene card expansion
+ */
+function toggleSceneCardExpansion(card) {
+    const wasSelected = card.classList.contains('selected');
+
+    // Remove selected class from all cards
+    document.querySelectorAll('.scene-card').forEach(c => {
+        c.classList.remove('selected');
+    });
+
+    // Toggle this card
+    if (!wasSelected) {
+        card.classList.add('selected');
+    }
+}
+
+/**
+ * Select a famous scene for transformation
+ */
+function selectFamousScene(scene, card) {
+    AppState.isFamousSceneMode = true;
+    AppState.isDemoMode = false;
+    AppState.currentText = scene.scene;
+
+    // Highlight the selected card
+    document.querySelectorAll('.scene-card').forEach(c => {
+        c.classList.remove('selected');
+    });
+    card.classList.add('selected');
+
+    // Show genre selection
+    showSection('genre-section', true);
+
+    // Scroll to genre section
+    document.getElementById('genre-section').scrollIntoView({ behavior: 'smooth' });
+
+    // Optional: Clear user's input field to avoid confusion
+    document.getElementById('memoir-input').value = '';
+    document.getElementById('char-counter').textContent = '0 / 300 words';
+    document.getElementById('transform-button').disabled = true;
+}
+
+/**
  * Save current scene to localStorage
  */
 function saveCurrentScene() {
@@ -353,9 +479,9 @@ function saveCurrentScene() {
 }
 
 /**
- * Load saved scene from localStorage
+ * Load saved scene from localStorage (with alert)
  */
-function loadSavedScene() {
+function loadSavedSceneWithAlert() {
     const savedText = StorageManager.loadCurrentScene();
 
     if (savedText) {
